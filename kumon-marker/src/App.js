@@ -8,13 +8,9 @@ function App() {
         <p>
           A website to make marking maths sheets quicker. Please allow the use of your camera to start.
         </p>
+        <CameraScene></CameraScene>
       </header>
-      <body>
-        <CameraScene>
-
-        </CameraScene>
-
-      </body>
+      
     
     
     </div>

@@ -4,8 +4,10 @@ import Webcam from "react-webcam";
 const CameraScene = () => {
 
     //completely empty to begin with
-    const [devices,setDevices] = React.useState([])
+    const [devices,setDevices] = React.useState([]);
+    const [backCam,setBackCam] = React.useState([]);
 
+    const videoConstraints ={ facingMode:  "environment" };
 
     //use callback to cache this function
     //gets all the possible camera feed 
@@ -16,7 +18,11 @@ const CameraScene = () => {
             setDevices(
                 mediaDevices.filter( 
                     ({kind}) => kind==="videoinput")
-                )
+                );
+            if(devices[0] != undefined){
+                setBackCam([devices[0]]);
+                
+            }
         }                
         ,[setDevices]
         
@@ -29,23 +35,16 @@ const CameraScene = () => {
 
 
     return (
-        <>
-        {devices.map( ( device,key) => (
-            <div key = {key}>
-                <Webcam
-                audio = {false}
-                mirrored = {true}
-                videoConstraints = {{deviceId:device.deviceId}}
-                />
-                {device.label || "Device $(key+)"}
 
-            </div>
-
-
-        ))}
-        
-        </>
+        <Webcam
+        audio={false}
+        mirrored={true}
+        videoConstraints={videoConstraints}
+        ></Webcam>
     )
-
+            
+          
 }
+
+    
 export default CameraScene;
