@@ -1,0 +1,4 @@
+npm start
+npm run android
+
+https://reactnative.dev/docs/environment-setup
